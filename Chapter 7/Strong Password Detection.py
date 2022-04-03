@@ -4,3 +4,11 @@
 
 import re
 
+strong_password_detector = re.compile(r'''(
+    [a-z]* # check for lowercase character
+    [A-Z]* # check for uppercase character
+    [0-9]* # checks for digits
+)''', re.VERBOSE)
+
+def strong_password(password: str) -> bool:
+    return pass
