@@ -4,11 +4,21 @@
 
 import re
 
-strong_password_detector = re.compile(r'''(
-    [a-z]* # check for lowercase character
-    [A-Z]* # check for uppercase character
-    [0-9]* # checks for digits
-)''', re.VERBOSE)
-
 def strong_password(password: str) -> bool:
-    return pass
+    
+    if len(password) < 8:
+        return False
+
+    strong_password_detector = re.compile(r'''(
+        ([a-z]*) # check for lowercase character
+        ([A-Z]*) # check for uppercase character
+        ([0-9]*) # checks for digits
+    )''', re.VERBOSE)
+
+    a = strong_password_detector.search(password)
+
+    for i in a.groups():
+        if i == "":
+            return False
+
+    return True
